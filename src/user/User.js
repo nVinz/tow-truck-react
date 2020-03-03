@@ -1,52 +1,49 @@
 import React from 'react';
-import { YMaps, Map, Placemark, Circle, TrafficControl, ZoomControl } from 'react-yandex-maps';
+import { YMaps, Map, Placemark, Circle, TrafficControl, ZoomControl, FullscreenControl, GeolocationControl } from 'react-yandex-maps';
 import 'bootstrap/dist/css/bootstrap.css';
+import '../App.css';
 
 class User extends React.Component {
   render() {
     var gps = require('../data/gps.json');
     var cfg = require('../data/cfg.json');
-
+    
     return (
-      <div className="User">
+      <div className="container d-flex mh-100 mw-100 justify-content-center">
+        <div className="card h-100">
 
-        My awesome application with maps!
+          <div className="card-header">Эвакуатор</div>
 
-        <YMaps>
-          <div>
-            <Map 
-              defaultState={{ center: [gps.latitude, gps.longitude], zoom: cfg.map.zoom }} 
-              width={ 800 }
-              height={ 600 }
-            >
-
+          <div className="media">
+            <YMaps>
+              <Map 
+                defaultState={{ center: [gps.latitude, gps.longitude], zoom: cfg.map.zoom }} 
+                width={ window.innerWidth }
+                height={ window.innerHeight * 0.8 }
+              >
                 <Placemark 
                     geometry={ [ gps.latitude, gps.longitude ] }
                     options={{ preset: 'islands#dotIcon', iconColor: 'green' }}
                 />
-
                 <Circle 
                     options={{ fillColor: cfg.circle.color.fill + cfg.circle.color.fillAlpha, 
-                           strokeColor: cfg.circle.color.stroke + cfg.circle.color.strokeAlpha,
-                           fillOpacity: cfg.circle.fillOpacity, 
-                           outline: true }}
+                          strokeColor: cfg.circle.color.stroke + cfg.circle.color.strokeAlpha,
+                          fillOpacity: cfg.circle.fillOpacity, 
+                          outline: true }}
                     geometry={ [ [gps.latitude, gps.longitude], cfg.circle.radius ] }
                 />
-
                 <TrafficControl />
                 <ZoomControl />
-
-            </Map>
+                <FullscreenControl />
+                <GeolocationControl />
+              </Map>
+            </YMaps>
           </div>
-        </YMaps>
 
-        <div class="card">
-            <img class="card-img-top" src="..." alt="Card image cap" />
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
+          <ul className="list-group list-group-flush">
+            <li className="list-group-item">8-800-555-35-35</li>
+          </ul>
+
         </div>
 
       </div>

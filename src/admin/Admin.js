@@ -1,36 +1,12 @@
 import React from 'react';
-import { YMaps, Map, Placemark, Circle, TrafficControl, ZoomControl } from 'react-yandex-maps';
+import { YMaps, Map, Placemark, Circle, TrafficControl, ZoomControl, FullscreenControl } from 'react-yandex-maps';
 import { geolocated } from "react-geolocated";
-
+import '../App.css';
 
 class Admin extends React.Component {
 
-  /*getGps = async (e) => {
-    e.preventDefault();
-    var geolocation = require('geolocation');
-
-    var obj = {
-      latitude: [],
-      longitude: []
-   };
-
-    geolocation.getCurrentPosition(
-      function (err, position) {
-        if (err) throw err
-        console.log(position);
-        obj.latitude.push(position.latitude);
-        console.log(obj);
-      }
-    ); 
-  }*/
   getGps = async (e) => {
     e.preventDefault();
-
-    //const write = require('write');
-    //write.sync('../data/test.json', 'some data...', { overwrite: true });
-
-    var FileSaver = require('file-saver');
-    FileSaver.saveAs("123", "../data/test.json");
   }
 
   render() {
@@ -38,51 +14,59 @@ class Admin extends React.Component {
     var cfg = require('../data/cfg.json');
 
     return !this.props.isGeolocationAvailable ? 
-    (<div>Your browser does not support Geolocation</div>) : 
+    (<div>Ваш браузер не поддерживает Геолокацию</div>) : 
       !this.props.isGeolocationEnabled ? 
-      (<div>Geolocation is not enabled</div>) : this.props.coords ? (
-        <div className="Admin">
-          <YMaps>
-            <div>
-              Admin panel
+      (<div>Геолокация не включена</div>) : this.props.coords ? (
 
-              <form onSubmit={this.getGps}>
-                <button>Update Position</button>
-              </form>
-              
-              <Map 
-                defaultState={{ center: [this.props.coords.latitude, this.props.coords.longitude], zoom: cfg.map.zoom }} 
-                width={800}
-                height={600}
-              >
+        <div class="container d-flex h-100 w-100 justify-content-center">
+          <div class="card h-100">
 
-                <Placemark 
-                  geometry={ [ this.props.coords.latitude, this.props.coords.longitude ] }
-                  dragend={{}}
-                />
+            <div class="card-header">Эвакуатор (админ-панель)</div>
 
-                <Circle 
-                  options={{fillColor: cfg.circle.color.fill + cfg.circle.color.fillAlpha, 
-                            strokeColor: cfg.circle.color.stroke + cfg.circle.color.strokeAlpha,
-                            fillOpacity: cfg.circle.fillOpacity, 
-                            outline: true }}
-                  geometry={ [ [this.props.coords.latitude, this.props.coords.longitude], cfg.circle.radius] }
-                />
-
-                <TrafficControl />
-                <ZoomControl />
-              </Map>
+            <div class="media">
+              <YMaps>
+                <Map 
+                  defaultState={{ center: [this.props.coords.latitude, this.props.coords.longitude], zoom: cfg.map.zoom }} 
+                  width={ window.innerWidth }
+                  height={ window.innerHeight * 0.8 }
+                >
+                  <Placemark 
+                    geometry={ [ this.props.coords.latitude, this.props.coords.longitude ] }
+                    options={{ preset: 'islands#dotIcon', iconColor: 'green' }}
+                  />
+                  <Circle 
+                    options={{fillColor: cfg.circle.color.fill + cfg.circle.color.fillAlpha, 
+                              strokeColor: cfg.circle.color.stroke + cfg.circle.color.strokeAlpha,
+                              fillOpacity: cfg.circle.fillOpacity, 
+                              outline: true }}
+                    geometry={ [ [this.props.coords.latitude, this.props.coords.longitude], cfg.circle.radius] }
+                  />
+                  <TrafficControl />
+                  <ZoomControl />
+                  <FullscreenControl />
+                </Map>
+              </YMaps>
             </div>
-          </YMaps>
+
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <form onSubmit={this.getGps}>
+                  <button class="btn btn-light">Обновить позицию</button>
+                </form>
+              </li>
+              <li class="list-group-item">8-800-555-35-35</li>
+            </ul>
+
+          </div>
+
         </div>
       ) 
     : (
-      <div>Getting the location data&hellip; </div>
+      <div>Получение геоданных&hellip; </div>
     );
   }
 }
 
-//export default Admin;
 export default geolocated({
   positionOptions: {
       enableHighAccuracy: true,
