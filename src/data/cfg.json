@@ -1,0 +1,15 @@
+{
+    "map" : {
+        "zoom" : 13 
+    },
+    "circle" : {
+        "radius" : 3000,
+        "fillOpacity" : 0.5,
+        "color" : {
+            "fill" : "B2FF2C",
+            "fillAlpha" : "55",
+            "stroke" : "3CFF00",
+            "strokeAlpha" : "99"
+        }
+    }
+}
