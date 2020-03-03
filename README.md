@@ -1,4 +1,4 @@
-![PC](https://imgur.com/a/G0zrMCO)
+![PC](https://i.imgur.com/hfJOH6w.png)
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
