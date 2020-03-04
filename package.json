@@ -10,15 +10,12 @@
     "bootstrap": "^4.4.1",
     "file-saver": "^2.0.2",
     "fs": "0.0.1-security",
-    "geolocation": "^0.2.0",
-    "get-window-size": "^0.1.0",
-    "ip": "^1.1.5",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-geolocated": "^3.0.1",
     "react-scripts": "3.4.0",
     "react-yandex-maps": "^4.2.0",
-    "write": "^2.0.0"
+    "write-file-p": "^1.0.7"
   },
   "scripts": {
     "start": "react-scripts start",

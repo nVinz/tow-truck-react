@@ -7,7 +7,7 @@ class User extends React.Component {
   render() {
     var gps = require('../data/gps.json');
     var cfg = require('../data/cfg.json');
-    
+        
     return (
       <div className="container d-flex mh-100 mw-100 justify-content-center">
         <div className="card h-100">
@@ -41,7 +41,7 @@ class User extends React.Component {
           </div>
 
           <ul className="list-group list-group-flush">
-            <li className="list-group-item">8-800-555-35-35</li>
+            <li className="list-group-item bg-light text-dark">8-800-555-35-35</li>
           </ul>
 
         </div>
