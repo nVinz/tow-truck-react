@@ -1,69 +1,87 @@
 import React from 'react';
-import { YMaps, Map, Placemark, Circle, TrafficControl, ZoomControl, FullscreenControl } from 'react-yandex-maps';
 import { geolocated } from "react-geolocated";
 import '../App.css';
 
 class Admin extends React.Component {
 
-  getGps = async (e) => {
-    e.preventDefault();
+  state = {
+    latitude: 0,
+    longtitude: 0
+  };
+
+  componentDidMount() {
+    this.getCoords();
+    this.interval = setInterval(() => {
+      this.getCoords();
+    }, 5000);
+  }
+
+  getCoords() {
+    /*if (navigator.geolocation) {
+      console.log('Geolocation is supported!');
+
+      navigator.geolocation.getCurrentPosition(function (position) {
+        console.log(position.coords.latitude);
+        console.log(position.coords.longitude);
+      })
+    }
+    else {
+      console.log('Geolocation is not supported for this Browser/OS version yet.');
+    }*/
+    
+    /*if (this.props.coords != null) {
+      console.log(this.props.coords.latitude);
+      console.log(this.props.coords.longitude);
+      fetch('http://127.0.0.1:8080/getData', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          latitude: this.props.coords.latitude,
+          longtitude: this.props.coords.longitude
+        })
+      });
+    }*/
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        fetch('http://127.0.0.1:8080/getData', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            latitude: position.coords.latitude,
+            longtitude: position.coords.longitude
+          })
+        });
+      })
+    }
   }
 
   render() {
-    //var gps = require('../data/gps.json');
-    var cfg = require('../data/cfg.json');
-
-    return !this.props.isGeolocationAvailable ? 
-    (<div>Ваш браузер не поддерживает Геолокацию</div>) : 
-      !this.props.isGeolocationEnabled ? 
-      (<div>Геолокация не включена</div>) : this.props.coords ? (
+    return (
 
         <div class="container d-flex h-100 w-100 justify-content-center">
           <div class="card h-100">
 
             <div class="card-header">Эвакуатор (админ-панель)</div>
 
-            <div class="media">
-              <YMaps>
-                <Map 
-                  defaultState={{ center: [this.props.coords.latitude, this.props.coords.longitude], zoom: cfg.map.zoom }} 
-                  width={ window.innerWidth }
-                  height={ window.innerHeight * 0.8 }
-                >
-                  <Placemark 
-                    geometry={ [ this.props.coords.latitude, this.props.coords.longitude ] }
-                    options={{ preset: 'islands#dotIcon', iconColor: 'green' }}
-                  />
-                  <Circle 
-                    options={{fillColor: cfg.circle.color.fill + cfg.circle.color.fillAlpha, 
-                              strokeColor: cfg.circle.color.stroke + cfg.circle.color.strokeAlpha,
-                              fillOpacity: cfg.circle.fillOpacity, 
-                              outline: true }}
-                    geometry={ [ [this.props.coords.latitude, this.props.coords.longitude], cfg.circle.radius] }
-                  />
-                  <TrafficControl />
-                  <ZoomControl />
-                  <FullscreenControl />
-                </Map>
-              </YMaps>
-            </div>
 
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                <form onSubmit={this.getGps}>
-                  <button class="btn btn-light">Обновить позицию</button>
-                </form>
+
+              <li class="list-group-item text-white bg-success">
+                Трекинг включен
               </li>
+
               <li class="list-group-item">8-800-555-35-35</li>
             </ul>
 
           </div>
 
         </div>
-      ) 
-    : (
-      <div>Получение геоданных&hellip; </div>
-    );
+      );
   }
 }
 
@@ -74,3 +92,14 @@ export default geolocated({
   watchPosition: true,
   userDecisionTimeout: 5000,
 })(Admin);
+
+/*
+
+
+              <li class="list-group-item">
+                <form onSubmit={this.getCoords}>
+                  <button class="btn btn-light">Обновить позицию</button>
+                </form>
+              </li>
+
+*/

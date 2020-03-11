@@ -4,8 +4,33 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../App.css';
 
 class User extends React.Component {
+  
+  state = {
+    latitude: 0,
+    longtitude: 0
+  };
+
+  componentDidMount() {
+    this.getCoords();
+    this.interval = setInterval(() => {
+      this.getCoords();
+    }, 5000);
+  }
+
+  getCoords() {
+    fetch("http://127.0.0.1:8080/getData")
+      .then(res => {
+        return res.json();
+      })
+      .then(res => {
+        this.setState({
+          latitude: res.latitude,
+          longitude: res.longtitude
+        });
+      });
+  }
+
   render() {
-    var gps = require('../data/gps.json');
     var cfg = require('../data/cfg.json');
     
     return (
@@ -17,12 +42,12 @@ class User extends React.Component {
           <div className="media">
             <YMaps>
               <Map 
-                defaultState={{ center: [gps.latitude, gps.longitude], zoom: cfg.map.zoom }} 
+                defaultState={{ center: [this.state.latitude, this.state.longitude], zoom: cfg.map.zoom }} 
                 width={ window.innerWidth }
                 height={ window.innerHeight * 0.8 }
               >
                 <Placemark 
-                    geometry={ [ gps.latitude, gps.longitude ] }
+                    geometry={ [ this.state.latitude, this.state.longitude ] }
                     options={{ preset: 'islands#dotIcon', iconColor: 'green' }}
                 />
                 <Circle 
@@ -30,7 +55,7 @@ class User extends React.Component {
                           strokeColor: cfg.circle.color.stroke + cfg.circle.color.strokeAlpha,
                           fillOpacity: cfg.circle.fillOpacity, 
                           outline: true }}
-                    geometry={ [ [gps.latitude, gps.longitude], cfg.circle.radius ] }
+                    geometry={ [ [this.state.latitude, this.state.longitude], cfg.circle.radius ] }
                 />
                 <TrafficControl />
                 <ZoomControl />
