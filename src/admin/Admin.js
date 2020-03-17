@@ -48,7 +48,7 @@ class Admin extends React.Component {
       navigator.geolocation.getCurrentPosition(function (position) {
         console.log(position.coords.latitude);
         console.log(position.coords.longitude);
-        fetch('http://10.8.80.32:8080/getData', {
+        fetch('https://tow-truck-spring.herokuapp.com/getData', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
