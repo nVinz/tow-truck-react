@@ -67,24 +67,6 @@ class Admin extends React.Component {
   }
 
   render() {
-    const loc = navigator.geolocation ? <section>Geolocation enabled</section> : <section>Geolocation disabled</section>;
-    
-    
-
-    navigator.geolocation.getCurrentPosition(
-      function(position) {
-           alert("Lat: " + position.coords.latitude + "\nLon: " + position.coords.longitude);
-      },
-      function(error){
-           alert(error.message);
-      }, {
-           enableHighAccuracy: true
-                ,timeout : 5000
-      }
-  );
-
-
-    
     return (
         <div class="container d-flex h-100 w-100 justify-content-center">
           <div class="card h-100">
@@ -93,10 +75,6 @@ class Admin extends React.Component {
 
 
             <ul class="list-group list-group-flush">
-
-              <li class="list-group-item">
-                {loc}
-              </li>
 
               <li class="list-group-item text-white bg-success">
                 Трекинг включен
@@ -114,7 +92,7 @@ class Admin extends React.Component {
 
 export default geolocated({
   positionOptions: {
-      enableHighAccuracy: false,
+      enableHighAccuracy: true,
   },
   watchPosition: true,
   userDecisionTimeout: 5000,
