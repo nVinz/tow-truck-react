@@ -1,2 +1,0 @@
-var latitude;
-var longitude;
