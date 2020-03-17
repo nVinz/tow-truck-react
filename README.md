@@ -1,12 +1,15 @@
+Доступно на http://nvinz.site/
+
+## Библиотеки
+- react-yandex-maps
+- react-geolocated
+- bootstrap
+
+## Архитектура
+![Архитектура](https://i.imgur.com/IxvvIEx.png)
+
 ## PC
 ![PC](https://i.imgur.com/hfJOH6w.png)
 
 ## Mobile
-![PC](https://i.imgur.com/tA8aiki.jpg)
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-### `npm start`
-### `npm run build`
+![Mobile](https://i.imgur.com/tA8aiki.jpg)
