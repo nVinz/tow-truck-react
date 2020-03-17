@@ -18,7 +18,7 @@ class User extends React.Component {
   }
 
   getCoords() {
-    fetch("http://127.0.0.1:8080/getData")
+    fetch("http://10.8.80.32:8080/getData")
       .then(res => {
         return res.json();
       })

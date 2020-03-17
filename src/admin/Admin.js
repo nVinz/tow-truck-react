@@ -46,7 +46,9 @@ class Admin extends React.Component {
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
-        fetch('http://127.0.0.1:8080/getData', {
+        console.log(position.coords.latitude);
+        console.log(position.coords.longitude);
+        fetch('http://10.8.80.32:8080/getData', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -58,11 +60,32 @@ class Admin extends React.Component {
         });
       })
     }
+    else {
+      alert("Geolocation is disabled");
+      }
+
   }
 
   render() {
-    return (
+    const loc = navigator.geolocation ? <section>Geolocation enabled</section> : <section>Geolocation disabled</section>;
+    
+    
 
+    navigator.geolocation.getCurrentPosition(
+      function(position) {
+           alert("Lat: " + position.coords.latitude + "\nLon: " + position.coords.longitude);
+      },
+      function(error){
+           alert(error.message);
+      }, {
+           enableHighAccuracy: true
+                ,timeout : 5000
+      }
+  );
+
+
+    
+    return (
         <div class="container d-flex h-100 w-100 justify-content-center">
           <div class="card h-100">
 
@@ -70,6 +93,10 @@ class Admin extends React.Component {
 
 
             <ul class="list-group list-group-flush">
+
+              <li class="list-group-item">
+                {loc}
+              </li>
 
               <li class="list-group-item text-white bg-success">
                 Трекинг включен
@@ -87,7 +114,7 @@ class Admin extends React.Component {
 
 export default geolocated({
   positionOptions: {
-      enableHighAccuracy: true,
+      enableHighAccuracy: false,
   },
   watchPosition: true,
   userDecisionTimeout: 5000,
