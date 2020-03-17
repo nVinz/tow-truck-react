@@ -14,8 +14,8 @@ class Admin extends React.Component {
   getCoords() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
-        /*console.log(position.coords.latitude);
-        console.log(position.coords.longitude);*/
+        console.log(position.coords.latitude);
+        console.log(position.coords.longitude);
         fetch('https://tow-truck-spring.herokuapp.com/getData', {
           method: 'POST',
           headers: {
