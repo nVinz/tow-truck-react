@@ -30,7 +30,7 @@ class Admin extends React.Component {
     }
     else {
       alert("Geolocation is disabled");
-      }
+    }
   }
 
   render() {
