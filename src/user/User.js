@@ -1,5 +1,5 @@
 import React from 'react';
-import { YMaps, Map, Placemark, Circle, TrafficControl, ZoomControl, FullscreenControl, GeolocationControl } from 'react-yandex-maps';
+import { YMaps, Map, Placemark, Circle, TrafficControl, ZoomControl, FullscreenControl } from 'react-yandex-maps';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../App.css';
 
