@@ -1,5 +1,4 @@
 import React from 'react';
-//import { geolocated } from "react-geolocated";
 import '../App.css';
 
 class Admin extends React.Component {
@@ -14,8 +13,6 @@ class Admin extends React.Component {
   getCoords() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
-        console.log(position.coords.latitude);
-        console.log(position.coords.longitude);
         fetch('https://tow-truck-spring.herokuapp.com/getData', {
           method: 'POST',
           headers: {
@@ -56,13 +53,5 @@ class Admin extends React.Component {
       );
   }
 }
-
-/*export default geolocated({
-  positionOptions: {
-      enableHighAccuracy: true,
-  },
-  watchPosition: true,
-  userDecisionTimeout: 5000,
-})(Admin);*/
 
 export default Admin;
