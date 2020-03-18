@@ -7,7 +7,7 @@ class Admin extends React.Component {
     this.getCoords();
     this.interval = setInterval(() => {
       this.getCoords();
-    }, 5000);
+    }, 30000);
   }
 
   getCoords() {

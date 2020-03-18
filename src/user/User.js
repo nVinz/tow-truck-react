@@ -14,7 +14,7 @@ class User extends React.Component {
     this.getCoords();
     this.interval = setInterval(() => {
       this.getCoords();
-    }, 5000);
+    }, 30000);
   }
 
   getCoords() {
@@ -39,31 +39,39 @@ class User extends React.Component {
 
           <div className="card-header">Эвакуатор</div>
 
-          <div className="media">
-            <YMaps>
-              <Map 
-                defaultState={{ center: [this.state.latitude, this.state.longitude], zoom: cfg.map.zoom }} 
-                width={ window.innerWidth }
-                height={ window.innerHeight * 0.8 }
-              >
-                <Placemark 
-                    geometry={ [ this.state.latitude, this.state.longitude ] }
-                    options={{ preset: 'islands#dotIcon', iconColor: 'green' }}
-                />
-                <Circle 
-                    options={{ fillColor: cfg.circle.color.fill + cfg.circle.color.fillAlpha, 
-                          strokeColor: cfg.circle.color.stroke + cfg.circle.color.strokeAlpha,
-                          fillOpacity: cfg.circle.fillOpacity, 
-                          outline: true }}
-                    geometry={ [ [this.state.latitude, this.state.longitude], cfg.circle.radius ] }
-                />
-                <TrafficControl />
-                <ZoomControl />
-                <FullscreenControl />
-                <GeolocationControl />
-              </Map>
-            </YMaps>
-          </div>
+          {this.state.latitude === 0 &&
+            <div class="d-flex justify-content-center">
+              <div class="spinner-grow text-secondary m-5 p-5" role="status"><span class="sr-only">Loading...</span></div>
+            </div>
+          } 
+
+          {this.state.latitude !== 0 &&
+            <div className="media">
+              <YMaps>
+                <Map 
+                  defaultState={{ center: [this.state.latitude, this.state.longitude], zoom: cfg.map.zoom }} 
+                  width={ window.innerWidth }
+                  height={ window.innerHeight * 0.8 }
+                >
+                  <Placemark 
+                      geometry={ [ this.state.latitude, this.state.longitude ] }
+                      options={{ preset: 'islands#dotIcon', iconColor: 'green' }}
+                  />
+                  <Circle 
+                      options={{ fillColor: cfg.circle.color.fill + cfg.circle.color.fillAlpha, 
+                            strokeColor: cfg.circle.color.stroke + cfg.circle.color.strokeAlpha,
+                            fillOpacity: cfg.circle.fillOpacity, 
+                            outline: true }}
+                      geometry={ [ [this.state.latitude, this.state.longitude], cfg.circle.radius ] }
+                  />
+                  <TrafficControl />
+                  <ZoomControl />
+                  <FullscreenControl />
+                  <GeolocationControl />
+                </Map>
+              </YMaps>
+            </div>
+          }
 
           <ul className="list-group list-group-flush">
             <li className="list-group-item bg-light text-dark">8-800-555-35-35</li>
