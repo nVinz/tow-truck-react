@@ -40,7 +40,7 @@ class Admin extends React.Component {
 
             <ul className="list-group list-group-flush">
 
-              {navigator.geolocation ?
+              {!navigator.geolocation ?
                 <div>
                   <li className="list-group-item text-white bg-danger">
                     Трекинг выключен
