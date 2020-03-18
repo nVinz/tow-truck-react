@@ -1,5 +1,5 @@
 import React from 'react';
-import { geolocated } from "react-geolocated";
+//import { geolocated } from "react-geolocated";
 import '../App.css';
 
 class Admin extends React.Component {
@@ -57,10 +57,12 @@ class Admin extends React.Component {
   }
 }
 
-export default geolocated({
+/*export default geolocated({
   positionOptions: {
       enableHighAccuracy: true,
   },
   watchPosition: true,
   userDecisionTimeout: 5000,
-})(Admin);
+})(Admin);*/
+
+export default Admin;
