@@ -37,11 +37,11 @@ class User extends React.Component {
       <div className="container d-flex mh-100 mw-100 justify-content-center">
         <div className="card h-100">
 
-          <div className="card-header">Эвакуатор</div>
+          <div className="card-header p-1">Эвакуатор</div>
 
           {this.state.latitude === 0 &&
-            <div class="d-flex justify-content-center">
-              <div class="spinner-grow text-secondary m-5 p-5" role="status"><span class="sr-only">Loading...</span></div>
+            <div className="d-flex justify-content-center">
+              <div className="spinner-grow text-secondary m-5 p-5" role="status"><span className="sr-only">Loading...</span></div>
             </div>
           } 
 
@@ -51,11 +51,16 @@ class User extends React.Component {
                 <Map 
                   defaultState={{ center: [this.state.latitude, this.state.longitude], zoom: cfg.map.zoom }} 
                   width={ window.innerWidth }
-                  height={ window.innerHeight * 0.8 }
+                  height={ window.innerHeight * 0.85 }
                 >
                   <Placemark 
+                      modules={['geoObject.addon.balloon']}
                       geometry={ [ this.state.latitude, this.state.longitude ] }
                       options={{ preset: 'islands#dotIcon', iconColor: 'green' }}
+                      properties={{
+                        iconCaption:
+                          'Сейчас находится здесь',
+                      }}
                   />
                   <Circle 
                       options={{ fillColor: cfg.circle.color.fill + cfg.circle.color.fillAlpha, 
@@ -67,16 +72,18 @@ class User extends React.Component {
                   <TrafficControl />
                   <ZoomControl />
                   <FullscreenControl />
-                  <GeolocationControl />
                 </Map>
               </YMaps>
             </div>
           }
 
-          <ul className="list-group list-group-flush">
-            <li className="list-group-item bg-light text-dark">8-800-555-35-35</li>
-          </ul>
+            <div className="card-body p-1">
+              0 (916) 000-00-00
+            </div>
 
+            <div className="card-footer text-muted" style={{'lineHeight': 0 + 'px'}}> 
+              <font size="3">by <a className="text-muted" href="https://vk.com/shelepukhin">nVinz</a></font> 
+            </div>
         </div>
 
       </div>

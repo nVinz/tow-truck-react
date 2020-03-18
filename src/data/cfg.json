@@ -6,9 +6,9 @@
         "radius" : 3000,
         "fillOpacity" : 0.5,
         "color" : {
-            "fill" : "B2FF2C",
-            "fillAlpha" : "55",
-            "stroke" : "3CFF00",
+            "fill" : "62BC65",
+            "fillAlpha" : "35",
+            "stroke" : "62BC65",
             "strokeAlpha" : "99"
         }
     }
