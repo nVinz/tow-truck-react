@@ -2,7 +2,6 @@
 
 ## Библиотеки
 - react-yandex-maps
-- react-geolocated
 - bootstrap
 
 ## Архитектура
