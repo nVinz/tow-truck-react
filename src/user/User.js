@@ -2,6 +2,7 @@ import React from 'react';
 import { YMaps, Map, Placemark, Circle, TrafficControl, ZoomControl, FullscreenControl } from 'react-yandex-maps';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../App.css';
+import { MDBCarousel, MDBCarouselInner, MDBCarouselItem, MDBView, MDBContainer } from "mdbreact";
 
 class User extends React.Component {
   
@@ -37,7 +38,7 @@ class User extends React.Component {
       <div className="container d-flex mh-100 mw-100 justify-content-center">
         <div className="card h-100">
 
-          <div className="card-header p-1">Эвакуатор</div>
+          <div className="card-header p-1">Эвакуатор в Москве</div>
 
           {this.state.latitude === 0 &&
             <div className="d-flex justify-content-center">
@@ -77,11 +78,70 @@ class User extends React.Component {
             </div>
           }
 
-            <div className="card-body p-1">
-              0 (916) 000-00-00
+<div class="ontainer-fluid">
+              <div class="row">
+                <div class="col-12 px-0 w-100 h-100">
+            <MDBContainer>
+                  <MDBCarousel
+                    activeItem={1}
+                    length={4}
+                    showControls={true}
+                    showIndicators={true}
+                    className="z-depth-1"
+                    slide
+                  >
+                    <MDBCarouselInner>
+                      <MDBCarouselItem itemId="1">
+                        <MDBView>
+                          <img
+                            className="d-block w-100"
+                            src="1.jpg"
+                            alt="First slide"
+                          />
+                        </MDBView>
+                      </MDBCarouselItem>
+                      <MDBCarouselItem itemId="2">
+                        <MDBView>
+                          <img
+                            className="d-block w-100"
+                            src="2.jpg"
+                            alt="Second slide"
+                          />
+                        </MDBView>
+                      </MDBCarouselItem>
+                      <MDBCarouselItem itemId="3">
+                        <MDBView>
+                          <img
+                            className="d-block w-100"
+                            src="3.jpg"
+                            alt="Third slide"
+                          />
+                        </MDBView>
+                      </MDBCarouselItem>
+                      <MDBCarouselItem itemId="4">
+                        <MDBView>
+                          <img
+                            className="d-block w-100"
+                            src="4.jpg"
+                            alt="4 slide"
+                          />
+                        </MDBView>
+                      </MDBCarouselItem>
+                    </MDBCarouselInner>
+                  </MDBCarousel>
+                </MDBContainer>
+                </div>
+              </div>  
             </div>
 
-            <div className="card-footer text-muted" style={{'lineHeight': 0 + 'px'}}> 
+
+
+            <div className="card-body p-1">
+              8 (901) 730-95-96 <br />
+              <b>Наиль</b>
+            </div>
+
+            <div className="card-footer text-muted pb-3" style={{'lineHeight': 0 + 'px'}}> 
               <font size="3">by <a className="text-muted" href="https://vk.com/shelepukhin">nVinz</a></font> 
             </div>
         </div>
@@ -92,3 +152,16 @@ class User extends React.Component {
 }
 
 export default User;
+
+/*
+
+
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-12 px-0">
+                  <img class="img-fluid h-100 w-100" src="1.jpg"/>
+                </div>
+              </div>  
+            </div>
+
+*/

@@ -63,7 +63,7 @@ class Admin extends React.Component {
                 </div>
               }
 
-              <div className="card-footer text-muted" style={{'lineHeight': 0 + 'px'}}> 
+              <div className="card-footer text-muted pb-3" style={{'lineHeight': 0 + 'px'}}> 
                 <font size="3">by <a className="text-muted" href="https://vk.com/shelepukhin">nVinz</a></font> 
               </div>
             </ul>
