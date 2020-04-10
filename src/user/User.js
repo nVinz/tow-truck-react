@@ -40,6 +40,78 @@ class User extends React.Component {
 
           <div className="card-header p-1">Эвакуатор в Москве</div>
 
+          <ul className="list-group list-group-flush">
+            <div>
+
+              <li className="list-group-item">
+                <div className="card-body p-1">
+                  8 (901) 730-95-96 <br />
+                  <b>Илья</b>
+                </div>
+              </li>
+
+            </div>
+          </ul>
+
+            <div class="row">
+              <div class="col-md-12 px-0 w-100">
+                <MDBContainer>
+                      <MDBCarousel
+                        activeItem={1}
+                        length={4}
+                        showControls={true}
+                        showIndicators={true}
+                        className="z-depth-1"
+                        slide
+                      >
+                        <MDBCarouselInner>
+                          <MDBCarouselItem itemId="1">
+                            <MDBView>
+                              <img
+                                className="d-block w-100"
+                                src="1.jpg"
+                                alt="First slide"
+                              />
+                            </MDBView>
+                          </MDBCarouselItem>
+                          <MDBCarouselItem itemId="2">
+                            <MDBView>
+                              <img
+                                className="d-block w-100"
+                                src="2.jpg"
+                                alt="Second slide"
+                              />
+                            </MDBView>
+                          </MDBCarouselItem>
+                          <MDBCarouselItem itemId="3">
+                            <MDBView>
+                              <img
+                                className="d-block w-100"
+                                src="3.jpg"
+                                alt="Third slide"
+                              />
+                            </MDBView>
+                          </MDBCarouselItem>
+                          <MDBCarouselItem itemId="4">
+                            <MDBView>
+                              <img
+                                className="d-block w-100"
+                                src="4.jpg"
+                                alt="4 slide"
+                              />
+                            </MDBView>
+                          </MDBCarouselItem>
+                        </MDBCarouselInner>
+                      </MDBCarousel>
+                    </MDBContainer>
+                </div>
+            </div>  
+
+
+
+
+
+
           {this.state.latitude === 0 &&
             <div className="d-flex justify-content-center">
               <div className="spinner-grow text-secondary m-5 p-5" role="status"><span className="sr-only">Loading...</span></div>
@@ -78,68 +150,9 @@ class User extends React.Component {
             </div>
           }
 
-<div class="ontainer-fluid">
-              <div class="row">
-                <div class="col-12 px-0 w-100 h-100">
-            <MDBContainer>
-                  <MDBCarousel
-                    activeItem={1}
-                    length={4}
-                    showControls={true}
-                    showIndicators={true}
-                    className="z-depth-1"
-                    slide
-                  >
-                    <MDBCarouselInner>
-                      <MDBCarouselItem itemId="1">
-                        <MDBView>
-                          <img
-                            className="d-block w-100"
-                            src="1.jpg"
-                            alt="First slide"
-                          />
-                        </MDBView>
-                      </MDBCarouselItem>
-                      <MDBCarouselItem itemId="2">
-                        <MDBView>
-                          <img
-                            className="d-block w-100"
-                            src="2.jpg"
-                            alt="Second slide"
-                          />
-                        </MDBView>
-                      </MDBCarouselItem>
-                      <MDBCarouselItem itemId="3">
-                        <MDBView>
-                          <img
-                            className="d-block w-100"
-                            src="3.jpg"
-                            alt="Third slide"
-                          />
-                        </MDBView>
-                      </MDBCarouselItem>
-                      <MDBCarouselItem itemId="4">
-                        <MDBView>
-                          <img
-                            className="d-block w-100"
-                            src="4.jpg"
-                            alt="4 slide"
-                          />
-                        </MDBView>
-                      </MDBCarouselItem>
-                    </MDBCarouselInner>
-                  </MDBCarousel>
-                </MDBContainer>
-                </div>
-              </div>  
-            </div>
 
 
 
-            <div className="card-body p-1">
-              8 (901) 730-95-96 <br />
-              <b>Наиль</b>
-            </div>
 
             <div className="card-footer text-muted pb-3" style={{'lineHeight': 0 + 'px'}}> 
               <font size="3">by <a className="text-muted" href="https://vk.com/shelepukhin">nVinz</a></font> 
