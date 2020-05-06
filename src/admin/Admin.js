@@ -19,6 +19,7 @@ class Admin extends React.Component {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
+            id: 1,
             latitude: position.coords.latitude,
             longtitude: position.coords.longitude
           })

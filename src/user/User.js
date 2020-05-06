@@ -41,8 +41,8 @@ class User extends React.Component {
         <div className="navbar-brand">Эвакуатор в <b>Москве</b></div>
       </nav>
       
-        <div className="container ">
-          <div class="card-deck">
+        <div className="container">
+          <div className="card-deck">
 
             <div className="card m-3 h-25">
               <div className="card-header text-center h4"><b>Контакты</b></div>
@@ -58,8 +58,8 @@ class User extends React.Component {
 
             <div className="card m-3 h-50">
               <div className="card-header text-center h4"><b>Фото</b></div>
-                <div class="row">
-                  <div class="col-md-12 px-0 w-100">
+                <div className="row">
+                  <div className="col-md-12 px-0 w-100">
                     <MDBContainer>
                           <MDBCarousel
                             activeItem={1}
@@ -113,11 +113,11 @@ class User extends React.Component {
               </div>
             </div>
 
-            <div className="card m-3 mw-100">
+            <div className="card m-3">
               <div className="card-header text-center h4"><b>Расположение</b></div>
-                    <div className="media mw-100">
+                    <div className="media">
                       {this.state.latitude === 0 &&
-                        <div className="d-flex justify-content-center">
+                        <div className="container justify-content-center">
                           <div className="spinner-grow text-secondary m-5 p-5" role="status"><span className="sr-only">Loading...</span></div>
                         </div>
                       } 
